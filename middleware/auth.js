@@ -1,29 +1,27 @@
-const { User } = require('../models')
-const bcrypt = require('bcrypt')
+const { User } = require("../models");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const SECRET_KEY = "secret";
 
-async function auth(req, res, next){
-    const { email, password } = req.headers
-    
-    if(!email || !password){
-        return res.status(401).json({
-            message: 'Email and Password are required'
-        })
+async function auth(req, res, next) {
+  const autoHeader = req.headers.authorization;
+  if (!autoHeader) {
+    return res.status(401).json({ message: "Authorization header missing" });
+  }
+
+  const token = autoHeader.split(" ")[1];
+
+  try {
+    if (token) {
+      const decodedToken = jwt.verify(token, SECRET_KEY);
+      req.user = decodedToken;
+      next();
+    } else {
+      res.status(401).json({ message: "Unauthorized" });
     }
-
-    try{
-        const user = await User.findOne( {where: {email}})
-
-        if(!user || !bcrypt.compare(password, user.password)){
-            return res.status(401).json({
-                message: 'Invalid Credential'
-            }) 
-        }
-
-        req.user = user
-        next()
-    } catch(err) {
-        next(err)
-    }
+  } catch (err) {
+    next(err);
+  }
 }
 
-module.exports = auth
+module.exports = auth;
