@@ -1,11 +1,18 @@
 const config = {
-    development: {
+  development: {
     username: "postgres",
     password: "12345678",
     database: "db_todos",
     host: "localhost",
-    dialect: "postgres"
-    }
-}
+    dialect: "postgres",
+  },
+  test: {
+    username: "postgres",
+    password: "12345678",
+    database: "db_todos",
+    host: "localhost",
+    dialect: "postgres",
+  },
+};
 
-module.exports = config
+module.exports = config;

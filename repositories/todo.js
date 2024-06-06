@@ -19,11 +19,11 @@ class TodoRepository {
 
   static async findAndPagination(userId, limit, offset) {
     const data = await Todo.findAndCountAll(
+      { where: { user_id: userId } },
       {
         limit: parseInt(limit),
         offset: parseInt(offset),
-      },
-      { where: { id: userId } }
+      }
     );
     return data;
   }

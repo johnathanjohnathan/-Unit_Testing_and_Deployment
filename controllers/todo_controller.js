@@ -32,15 +32,13 @@ class TodoController {
         totalItems: data.count,
         totalPages: Math.ceil(data.count / limit),
         currentPage: parseInt(page),
-        users: data.rows,
+        data: data.rows,
       });
     } catch (err) {
       res.status(500).json({
         message: err.message || "server error",
       });
     }
-
-    res.status(200).json(data);
   }
 
   static async updateOne(req, res, next) {
