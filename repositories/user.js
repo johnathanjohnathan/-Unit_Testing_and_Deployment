@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { User } = require("../models");
 
 class UserRepository {
@@ -41,7 +42,9 @@ class UserRepository {
   }
 
   static async findAndPagination(limit, offset) {
+    const status = true;
     const data = await User.findAndCountAll({
+      where: { status },
       limit: parseInt(limit),
       offset: parseInt(offset),
     });
@@ -61,11 +64,14 @@ class UserRepository {
   }
 
   static async deleteID(id) {
-    const data = await User.destroy({
-      where: {
-        id: id,
+    let user = await User.update(
+      {
+        status: false,
       },
-    });
+      { where: { id: id } }
+    );
+    user = await this.findUser(id);
+    return user;
   }
 }
 

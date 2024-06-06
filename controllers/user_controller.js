@@ -1,7 +1,6 @@
 const { json } = require("sequelize");
 const UserService = require("../service/user");
 
-// Buat Todo Service and Repo
 // Buat soft delete dengan status
 class UserController {
   static async register(req, res, next) {
@@ -122,10 +121,11 @@ class UserController {
   static async delete(req, res, next) {
     const { id } = req.params;
     try {
-      const data = await UserService.deleteID(id);
+      const user = await UserService.deleteID(id);
 
       return res.status(200).json({
         message: "data deleted",
+        user,
       });
     } catch (err) {
       res.status(500).json({
