@@ -1,0 +1,15 @@
+meta {
+  name: Get Todo
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:3000/todos?userId=3
+  body: json
+  auth: none
+}
+
+query {
+  userId: 3
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Update Todo
+  type: http
+  seq: 5
+}
+
+patch {
+  url: http://localhost:3000/todos/5
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title" : "Study",
+    "completed" : true,
+    "user_id" : 3
+  }
+}

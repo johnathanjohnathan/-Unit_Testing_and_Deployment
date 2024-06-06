@@ -1,0 +1,21 @@
+meta {
+  name: Get Users
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:3000/users?limit=12&page=1
+  body: json
+  auth: none
+}
+
+query {
+  limit: 12
+  page: 1
+}
+
+headers {
+  email: charlie@gmail.com
+  password: charlie123
+}

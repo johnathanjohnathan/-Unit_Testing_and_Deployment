@@ -1,0 +1,23 @@
+meta {
+  name: Post Profile_Pictures
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:3000/users/upload/300
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  {
+    "name" : "charlie",
+    "email" : "charlie5@gmail.com",
+    "password": "charlie123"
+  }
+}
+
+body:multipart-form {
+  profile_pictures: @file(C:\Users\John\Documents\Fullstack Developer\Week 8\Picture_1.jpg)
+}

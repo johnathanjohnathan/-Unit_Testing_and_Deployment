@@ -1,0 +1,228 @@
+{
+  "info": {
+    "name": "User and Todo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Delete Users by Id",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:3000/users/12",
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Users by Id",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3000/users/4",
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Users",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "email",
+                "value": "charlie@gmail.com",
+                "disabled": false,
+                "type": "default"
+              },
+              {
+                "key": "password",
+                "value": "charlie123",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://localhost:3000/users?limit=2&page=5",
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Post Users",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://localhost:3000/users/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\" : \"charlie\",\n  \"email\" : \"charlie5@gmail.com\",\n  \"password\": \"charlie123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "event": [],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "http://localhost:3000/users/4",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\" : \"doni\",\n  \"email\" : \"doni@gmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Login Users",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://localhost:3000/users/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\" : \"charlie@gmail.com\",\n  \"password\": \"charlie123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Todo",
+      "item": [
+        {
+          "name": "Delete Todo by Id",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:3000/todos/1",
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Todo by Id",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3000/todos/5",
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Todo",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3000/todos?userId=3",
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Post Todo",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://localhost:3000/todos",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\" : \"Shopping\",\n  \"completed\" : true,\n  \"user_id\" : 3\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Update Todo",
+          "event": [],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": "http://localhost:3000/todos/5",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\" : \"Study\",\n  \"completed\" : true,\n  \"user_id\" : 3\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "bruno",
+      "event": []
+    }
+  ],
+  "variable": []
+}

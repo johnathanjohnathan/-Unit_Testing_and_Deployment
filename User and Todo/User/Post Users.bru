@@ -1,0 +1,23 @@
+meta {
+  name: Post Users
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/users/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name" : "delta",
+    "email" : "delta2@gmail.com",
+    "password": "delta1234"
+  }
+}
+
+body:form-urlencoded {
+  file: 
+}
