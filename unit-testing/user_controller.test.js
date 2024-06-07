@@ -1,16 +1,15 @@
 const request = require("supertest");
 const app = require("../app.js");
+const SECRET_KEY = "secret";
 
-const token = "secret";
+// Register User
 const request_user_register = {
   email: "hallo@email.com",
   password: "admin",
   name: "haha",
 };
-
 let user_id = 0;
 
-// Register User
 describe("POST /users/register", () => {
   test("should register a user", async () => {
     return request(app)
@@ -46,9 +45,36 @@ describe("POST /users/upload/:id", () => {
   });
 });
 
-// Login User
+// Login
+const request_user_login = {
+  email: "hallo@email.com",
+  password: "admin",
+};
+let token = " ";
+
+describe("POST /users/login", () => {
+  test("User must have account", async () => {
+    return request(app)
+      .post("/users/login")
+      .send(request_user_login)
+      .expect(200)
+      .then(({ body }) => {
+        token = body.token;
+      });
+  });
+});
 
 // Get User
+describe("GET /users", () => {
+  test("should return 200 OK with valid bearer token", async () => {
+    const new_token = token;
+    const response = await request(app)
+      .get("/users")
+      .set("Authorization", `Bearer ${new_token}`);
+
+    expect(response.status).toBe(200);
+  });
+});
 
 // Update User
 describe("PATCH /users/:id", () => {
@@ -69,10 +95,12 @@ describe("PATCH /users/:id", () => {
 
 // Delete User
 describe("DELETE /users/:id", () => {
-    test("should soft delete user data", async () => {
-      return request(app)
-        .delete(`/users/${user_id}`)
-        .expect(200)
-        .expect("Content-Type", /application\/json/);
-    });
+  test("should soft delete user data", async () => {
+    return request(app)
+      .delete(`/users/${user_id}`)
+      .expect(200)
+      .expect("Content-Type", /application\/json/);
   });
+});
+
+//npm run test -t user_controller.test.js
