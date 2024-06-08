@@ -28,7 +28,7 @@ class TodoService {
   static async getOne(id) {
     const todo = await TodoRepository.findTodo(id);
     if (!todo) {
-      throw new Error("no user with id= " + id + " not found!");
+      throw new Error("todo with id= " + id + " not found!");
     }
     return todo;
   }

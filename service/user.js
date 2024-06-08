@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const UserRepository = require("../repositories/user");
 const SECRET_KEY = "secret";
@@ -23,7 +23,7 @@ class UserService {
     const { id, file } = data;
     const new_user = await UserRepository.updateProfilePicture(id, file);
     if (!new_user) {
-      throw new Error("no user with id= " + id + " not found!");
+      throw new Error("user with id= " + id + " not found!");
     }
     if (!file) {
       throw new Error("no file found!");

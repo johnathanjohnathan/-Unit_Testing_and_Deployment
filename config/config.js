@@ -3,14 +3,14 @@ const config = {
     username: "postgres",
     password: "12345678",
     database: "db_todos",
-    host: "localhost",
+    host: "pgserver",
     dialect: "postgres",
   },
   test: {
     username: "postgres",
     password: "12345678",
     database: "db_todos",
-    host: "localhost",
+    host: "pgserver",
     dialect: "postgres",
   },
 };
